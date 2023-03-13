@@ -3,7 +3,7 @@
 target="testnet"
 mode="debug" 
 unique_name="dex-1"
-db_dsn="crstWriteCremon:SETPASSWORD@tcp(crescent-testnet-v3-rc4-cluster.cluster-cpqal8fz9kij.ap-northeast-2.rds.amazonaws.com:3306)/crst"
+db_dsn=""
 recover_modules = [""]
 #local_grpc_endpoint = "127.0.0.1:9090"
 #local_rest_endpoint = "127.0.0.1:1317"     
