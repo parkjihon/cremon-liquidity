@@ -1,0 +1,108 @@
+[config]
+#traceonly, nodb, debug, release
+target="testnet"
+mode="debug" 
+unique_name="dex-1"
+db_dsn="crstWriteCremon:SETPASSWORD@tcp(crescent-testnet-v3-rc4-cluster.cluster-cpqal8fz9kij.ap-northeast-2.rds.amazonaws.com:3306)/crst"
+recover_modules = [""]
+#local_grpc_endpoint = "127.0.0.1:9090"
+#local_rest_endpoint = "127.0.0.1:1317"     
+log_level = 1   # 0=debug, 1=info, 2=warning, 3=error, 4=fatal, 5=panic
+log_file="./cremon.log"
+flush_force = 0
+ha_port = 3030
+trace_file= "/Users/jihonee/.crescent/trace-jihon.output"
+#trace_file= "/Users/jihonee/.crescent/temp.output"
+
+[monitor]
+queue_name=""
+aws_region="ap-northeast-2"
+aws_key=""      
+aws_secret=""
+bot_api=""   # cremon_test_us_bot
+bot_master_chat_id=12345678
+#if aws_key is not set, AWS SQS is disabled
+
+# rpc_endpoint should be support http to use tendermint websocket client
+[chains]
+[chains.cre]
+chain_id="mooncat-2"
+rpc_endpoint="http://10.99.70.104:26657"
+grpc_endpoint="10.99.70.104:9090"   # api node
+rest_endpoint = "10.99.70.104:1317" 
+tracestore= "/Users/jihonee/.crescent/cre.fifo"
+acc_prefix="cre" 
+main=1
+
+[chains.cosmos]
+chain_id="cosmoshub-4"
+rpc_endpoint="http://10.14.61.26:26657"
+grpc_endpoint="10.14.61.26:9090"
+rest_endpoint = ""     
+tracestore= ""
+acc_prefix="cosmos"
+sub_disabled=1
+
+[chains.terra]
+chain_id="columbus-5"
+rpc_endpoint="http://10.14.61.19:26657"  
+grpc_endpoint="10.14.61.19:9090"
+rest_endpoint = ""     
+tracestore= ""
+acc_prefix="terra"
+sub_disabled=1
+
+[chains.axelar]
+chain_id="axelar-dojo-1"
+rpc_endpoint="http://10.14.61.31:26657"
+grpc_endpoint="10.14.61.31:9090"
+rest_endpoint = ""     
+tracestore= ""
+acc_prefix="axelar"
+sub_disabled=1
+
+[chains.gravity]
+chain_id="gravity-bridge-3"
+rpc_endpoint="http://10.14.61.57:26657"
+grpc_endpoint="10.14.61.57:9090"
+rest_endpoint = ""     
+tracestore= ""
+acc_prefix="gravity"
+sub_disabled=1
+
+[chains.agoric]
+chain_id="agoric-3"
+rpc_endpoint="http://10.14.61.54:26657"  
+grpc_endpoint="10.14.61.54:9090"
+rest_endpoint = ""     
+tracestore= ""
+acc_prefix="agoric"
+sub_disabled=1
+
+[connections]
+[connections.terra]
+channel= "channel-0"
+counter_chain_id =  "columbus-5"
+counter_channel = "channel-49"
+
+[connections.cosmos]
+channel= "channel-1"
+counter_chain_id ="cosmoshub-4"
+counter_channel = "channel-326"
+
+[connections.axelar]
+channel= "channel-4"
+counter_chain_id="axelar-dojo-1"
+counter_channel = "channel-7"
+
+[connections.gravity]
+channel= "channel-2"
+counter_chain_id ="gravity-bridge-3"
+counter_channel = "channel-62"
+
+[connections.agoric]
+channel= "channel-11"
+counter_chain_id =  "agoric-3"
+counter_channel = "channel-2"
+
+
